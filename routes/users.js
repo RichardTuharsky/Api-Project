@@ -20,4 +20,20 @@ router.post('/',(req,res) =>{
     res.send(` User with the user name ${user.firstName} added to the database`); 
 });
 
+router.get('/:id', (req,res) => {
+    const {id} = req.params;
+
+   const foundUser = user.find((user) => user.id == id)
+
+    res.send(foundUser);
+});
+
+router.delete('/:id', (req, res) => {
+    const {id} = req.params;
+
+    users = users.filter( (user) => user.id != id);
+
+    res.send(`user with the id ${id} is deleted from database.`); 
+});
+
 export default router;
